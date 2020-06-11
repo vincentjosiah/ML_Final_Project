@@ -178,7 +178,7 @@ print("0: ",a,b)
 
 
 # Run for the rest of the 50 epochs
-for f in range(2):         
+for f in range(20):         
     for l in range(len(data)):  # For experiment 3 i just change the for loop range to be "int(len(data)/2)" for half of the data set.
         hidden_evaluations = np.zeros(hidden_layers)
         output_evaluations = np.zeros(10)
@@ -216,15 +216,15 @@ print(confusion_matrix)
 
 # This is an initialization of the x axis for the plots.  Probably a much better way of doing this, but this is what I came up with.
 # x = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50]
-x = [0,1,2]
+# x = [0,1,2]
 
 
-# graph the results
-plt.ylim(0,1)
-plt.xlim(0,3)
-plt.title("Experiment 1: n=2")
-plt.plot(x, acc)
-plt.plot(x, acc_test)
-plt.ylabel("accuracy")
-plt.xlabel("epoch")
-plt.show()
+# # graph the results
+# plt.ylim(0,1)
+# plt.xlim(0,3)
+# plt.title("Experiment 1: n=2")
+# plt.plot(x, acc)
+# plt.plot(x, acc_test)
+# plt.ylabel("accuracy")
+# plt.xlabel("epoch")
+# plt.show()
