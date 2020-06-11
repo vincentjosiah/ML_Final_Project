@@ -152,7 +152,7 @@ data = load_data("data/MNIST/normalized_mnist_train.csv")
 data_test = load_data("data/MNIST/normalized_mnist_test.csv")
 
 # set the number for n and the learning rate. Adjust the hidden_layers to set the n value in Experiment 1
-hidden_layers = 2           # This is the n value.  The hidden_layers name a little confusion, but it is the nubmer of hidden_neurons in the hidden layer
+hidden_layers = 10          # This is the n value.  The hidden_layers name a little confusion, but it is the nubmer of hidden_neurons in the hidden layer
 learning_rate = 0.1         # Learning rate which was always constant at 0.1
 
 # initialize confusion matrix
@@ -178,7 +178,7 @@ print("0: ",a,b)
 
 
 # Run for the rest of the 50 epochs
-for f in range(20):         
+for f in range(5):         
     for l in range(len(data)):  # For experiment 3 i just change the for loop range to be "int(len(data)/2)" for half of the data set.
         hidden_evaluations = np.zeros(hidden_layers)
         output_evaluations = np.zeros(10)
@@ -216,15 +216,15 @@ print(confusion_matrix)
 
 # This is an initialization of the x axis for the plots.  Probably a much better way of doing this, but this is what I came up with.
 # x = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50]
-# x = [0,1,2]
+x = [0,1,2,3,4,5]
 
 
-# # graph the results
-# plt.ylim(0,1)
-# plt.xlim(0,3)
-# plt.title("Experiment 1: n=2")
-# plt.plot(x, acc)
-# plt.plot(x, acc_test)
-# plt.ylabel("accuracy")
-# plt.xlabel("epoch")
-# plt.show()
+# graph the results
+plt.ylim(0,1)
+plt.xlim(0,6)
+plt.title("Experiment 1: n=5")
+plt.plot(x, acc)
+plt.plot(x, acc_test)
+plt.ylabel("accuracy")
+plt.xlabel("epoch")
+plt.show()
