@@ -1,31 +1,6 @@
 import pandas as pd
 import numpy as np
 
-
-# Function for computing the prior probabilty of spam or not spam.
-def compute_prior_probability(data, number):
-  is_number = 0.0
-  not_number = 0.0
-
-  for item in data:
-    if item[0] == number: is_number += 1.0
-    else: not_number += 1.0
-
-  is_number_probability = is_number / (is_number + not_number)
-  not_number_probability = not_number / (is_number + not_number)
-
-  return is_number_probability, not_number_probability
-
-
-def compute_prior_probabilities(data):
-  number_priors = np.zeros((10,2))
-
-  for i in range(10):
-    number_priors[i][0], number_priors[i][1] = compute_prior_probability(data, float(i))
-
-  return number_priors
-
-
 def split_data(data, number):
   is_number_list = []
   not_number_list = []
@@ -99,21 +74,18 @@ def conditional_probability_log_input(ip, mean, std_dev):
 # Use pandas to read the csv file into a variable we can use
 df_train = pd.read_csv("data/MNIST/normalized_mnist_train.csv", sep=',', header=None, dtype=float) # use the path to your data file here.  Needs to be csv(can change .data to .csv).
 train_data = df_train.values
+quarter_data = train_data[:15000]
 
 df_test = pd.read_csv("data/MNIST/normalized_mnist_test.csv", sep=',', header=None, dtype=float)
 test_data = df_test.values
-
 
 # Part 2
 
 accuracies = np.zeros(10)
 
 for j in range(10):
-  # Compute prior probabilities
-  prior_probabilities = compute_prior_probabilities(train_data)
-
   # For figuring out the means and std deviations it is helpful to split into 2 list of spam and not spam.
-  is_number_arr, not_number_arr = split_data(train_data, float(j))
+  is_number_arr, not_number_arr = split_data(test_data, float(j))
 
   # get the means
   is_number_means, not_number_means = get_means(is_number_arr, not_number_arr)
@@ -171,6 +143,8 @@ for j in range(10):
 
       if target == float(j):
         not_correct += 1
+
+  print(np.round(correct / (correct + not_correct), 4), j)
 
 
   accuracies[j] = correct / (correct + not_correct)
