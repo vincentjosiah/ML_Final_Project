@@ -24,4 +24,4 @@ If you want to run on a quarter of the data to see the results you can use the v
 ```bash
 python3 neural-networks.py
 ```
-Inside the program you will need to make sure your path is pointing to the correct input files.  If you unzipped the data file in the same directory it should automatically point to it. Change the variable hidden layers to specify how many neurons you want in the hidden layer (value for n in report). Change the value in the "f" for loop for the number of epochs you want to run (currently set to 20). Update the learning rate variable to set the learning rate (currently set at 0.1).
+Inside the program you will need to make sure your path is pointing to the correct input files.  If you unzipped the data file in the same directory it should automatically point to it. Change the variable "hidden_layers" to specify how many neurons you want in the hidden layer (value for n in report). Change the value in the "f" "for loop" for the number of epochs you want to run (currently set to 20). Update the "learning_rate" variable to set the learning rate (currently set at 0.1).
